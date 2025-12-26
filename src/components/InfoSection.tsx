@@ -26,7 +26,7 @@ const InfoSection: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 pb-20 md:pb-0 relative">
+    <div className="space-y-6 pb-32 md:pb-8 relative">
       {/* Contact Info */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
