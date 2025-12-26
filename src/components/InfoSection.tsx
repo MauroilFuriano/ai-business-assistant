@@ -101,14 +101,6 @@ const InfoSection: React.FC = () => {
         <ArrowUp size={24} />
       </button>
 
-      {/* Call Now Button */}
-      <a
-        href={`tel:${BUSINESS_INFO.phone}`}
-        className="fixed bottom-24 right-4 md:bottom-8 md:right-8 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 z-40 flex items-center justify-center hover:scale-110"
-        aria-label="Chiama Ora"
-      >
-        <PhoneCall size={24} />
-      </a>
     </div>
   );
 };
