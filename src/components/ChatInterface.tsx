@@ -117,7 +117,9 @@ const ChatInterface: React.FC = () => {
               } ${msg.isError ? 'bg-red-100 text-red-600 border-red-300' : ''}`}
             >
               {msg.text.split('\n').map((line, i) => (
-                <p key={i} className={i > 0 ? 'mt-1' : ''}>{line}</p>
+                <p key={i} className={i > 0 ? 'mt-1' : ''}>
+                  {line.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1')}
+                </p>
               ))}
             </div>
           </div>

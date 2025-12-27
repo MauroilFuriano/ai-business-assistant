@@ -46,7 +46,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Savoiardi, mascarpone fresco, caffè espresso, cacao amaro.",
       price: "€ 6,00",
       category: "Dolci",
-      imageUrl: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "https://images.unsplash.com/photo-1542124948-dc391252a940?auto=format&fit=crop&w=500&q=60"
     },
     {
       id: "5",
@@ -54,7 +54,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Pomodoro, mozzarella, salame piccante napoletano.",
       price: "€ 10,00",
       category: "Pizze",
-      imageUrl: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=60"
     }
   ],
   faq: {
