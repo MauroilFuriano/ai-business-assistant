@@ -13,7 +13,7 @@
     Sito web moderno con integrato "Mario", un cameriere virtuale basato su AI che gestisce prenotazioni e risponde alle domande dei clienti h24.
   </p>
   
-  [🌐 Prova la Demo Live](INSERISCI_IL_TUO_LINK_VERCEL_QUI)
+  [🌐 Prova la Demo Live](https://ai-business-assistant-two.vercel.app/)
 </div>
 
 ---
