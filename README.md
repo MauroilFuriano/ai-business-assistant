@@ -1,20 +1,70 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img width="100%" alt="AI Restaurant Concierge Banner" src="LINK_IMMAGINE_QUI" />
+
+  # 🍕 AI Business Assistant | Ristorante Demo
+  
+  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+  [![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=google-gemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+
+  <p>
+    <strong>Una demo interattiva per il settore Horeca/Ristorazione.</strong><br>
+    Sito web moderno con integrato "Mario", un cameriere virtuale basato su AI che gestisce prenotazioni e risponde alle domande sul menu h24.
+  </p>
+  
+  [🌐 Prova la Demo Live](https://ai-business-assistant-two.vercel.app/)
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## 💡 Il Concetto
+I ristoratori perdono ore al telefono per rispondere sempre alle stesse domande ("Siete aperti?", "Cosa c'è nel menu?", "Avete posto?").
+Questo progetto dimostra come un **Sito Web AI-Driven** possa automatizzare il customer care.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Gh9gP1_o0UZ-uX9aePq5m29hoJD-Y3Wi
+Il cuore del sistema è **Mario**, un chatbot istruito specificamente per comportarsi come un cameriere italiano gentile e professionale.
 
-## Run Locally
+## ✨ Funzionalità Principali
 
-**Prerequisites:**  Node.js
+### 🤖 "Mario" - AI Concierge (Gemini Powered)
+Non è un semplice bot a risposte preimpostate. Grazie al **Prompt Engineering** su Google Gemini:
+* **Conosce il Menu:** Risponde a domande sugli ingredienti (es. "C'è l'aglio nella carbonara?").
+* **Gestione Orari:** Informa i clienti sull'apertura in base al giorno.
+* **Simulazione Prenotazioni:** Accoglie richieste di tavoli raccogliendo dati (Nome, Ospiti, Orario).
+* **Personality:** Mantiene un tono cordiale, usa emoji e risponde solo a domande pertinenti al ristorante.
 
+### 📱 UI/UX Ristorante Moderno
+* **Menu Digitale Filtrabile:** Navigazione fluida tra Antipasti, Primi, Pizze, ecc.
+* **Tab System:** Interfaccia stile "App Mobile" con navigazione inferiore per massima usabilità da smartphone.
+* **Contact Form:** Modulo prenotazione classico per chi preferisce non usare la chat.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## 🛠 Tech Stack & Architettura
+
+* **Frontend:** React (Vite) + TypeScript
+* **Styling:** Tailwind CSS (Design System pulito e responsive)
+* **AI Engine:** Google Gemini SDK (`@google/genai`)
+* **State Management:** React Hooks (`useState`, `useMemo`, `useEffect`)
+* **Icons:** Lucide React
+
+### 🧠 Come funziona l'AI (Knowledge Injection)
+Il bot non "inventa". I dati del ristorante sono centralizzati nel file `constants.ts`.
+Il sistema (`geminiService.ts`) inietta dinamicamente questi dati nel "System Prompt" di Gemini ogni volta che si avvia una chat.
+Questo garantisce che l'AI risponda sempre con prezzi e orari aggiornati senza dover riaddestrare il modello.
+
+```typescript
+// Esempio della logica di iniezione dati
+const buildSystemInstruction = () => {
+  return `
+    Sei "Mario", l'assistente di "${BUSINESS_INFO.name}".
+    
+    MENU: ${menuData}
+    ORARI: ${hoursData}
+    
+    REGOLE:
+    1. Rispondi SOLO in Italiano.
+    2. Se chiedono prenotazioni, chiedi numero persone e orario.
+    3. Sii gentile e professionale.
+  `;
+};
