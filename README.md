@@ -10,28 +10,28 @@
 
   <p>
     <strong>Una demo interattiva per il settore Horeca/Ristorazione.</strong><br>
-    Sito web moderno con integrato "Mario", un cameriere virtuale basato su AI che gestisce prenotazioni e risponde alle domande sul menu h24.
+    Sito web moderno con integrato "Mario", un cameriere virtuale basato su AI che gestisce prenotazioni e risponde alle domande dei clienti h24.
   </p>
   
-  [🌐 Prova la Demo Live](https://ai-business-assistant-two.vercel.app/)
+  [🌐 Prova la Demo Live](INSERISCI_IL_TUO_LINK_VERCEL_QUI)
 </div>
 
 ---
 
 ## 💡 Il Concetto
-I ristoratori perdono ore al telefono per rispondere sempre alle stesse domande ("Siete aperti?", "Cosa c'è nel menu?", "Avete posto?").
+I ristoratori perdono ore al telefono per rispondere sempre alle stesse domande ("Siete aperti?", "Avete il senza glutine?", "C'è posto per 4?").
 Questo progetto dimostra come un **Sito Web AI-Driven** possa automatizzare il customer care.
 
-Il cuore del sistema è **Mario**, un chatbot istruito specificamente per comportarsi come un cameriere italiano gentile e professionale.
+Il cuore del sistema è **Mario**, un chatbot istruito specificamente per comportarsi come un cameriere italiano gentile, professionale e attento alla sicurezza alimentare.
 
 ## ✨ Funzionalità Principali
 
 ### 🤖 "Mario" - AI Concierge (Gemini Powered)
 Non è un semplice bot a risposte preimpostate. Grazie al **Prompt Engineering** su Google Gemini:
-* **Conosce il Menu:** Risponde a domande sugli ingredienti (es. "C'è l'aglio nella carbonara?").
-* **Gestione Orari:** Informa i clienti sull'apertura in base al giorno.
+* **Gestione Allergeni & Intolleranze:** Risponde con precisione a domande critiche per la salute (es. *"Avete pizze senza glutine?"* o *"Quali piatti sono senza lattosio?"*), consultando la knowledge base del ristorante.
+* **Gestione Orari:** Informa i clienti sull'apertura in base al giorno corrente.
 * **Simulazione Prenotazioni:** Accoglie richieste di tavoli raccogliendo dati (Nome, Ospiti, Orario).
-* **Personality:** Mantiene un tono cordiale, usa emoji e risponde solo a domande pertinenti al ristorante.
+* **Personality:** Mantiene un tono cordiale, usa emoji e risponde solo a domande pertinenti.
 
 ### 📱 UI/UX Ristorante Moderno
 * **Menu Digitale Filtrabile:** Navigazione fluida tra Antipasti, Primi, Pizze, ecc.
@@ -51,7 +51,7 @@ Non è un semplice bot a risposte preimpostate. Grazie al **Prompt Engineering**
 ### 🧠 Come funziona l'AI (Knowledge Injection)
 Il bot non "inventa". I dati del ristorante sono centralizzati nel file `constants.ts`.
 Il sistema (`geminiService.ts`) inietta dinamicamente questi dati nel "System Prompt" di Gemini ogni volta che si avvia una chat.
-Questo garantisce che l'AI risponda sempre con prezzi e orari aggiornati senza dover riaddestrare il modello.
+Questo garantisce che l'AI risponda sempre con prezzi, orari e informazioni sugli allergeni aggiornate.
 
 ```typescript
 // Esempio della logica di iniezione dati
@@ -60,11 +60,11 @@ const buildSystemInstruction = () => {
     Sei "Mario", l'assistente di "${BUSINESS_INFO.name}".
     
     MENU: ${menuData}
-    ORARI: ${hoursData}
+    FAQ (Allergeni/Servizi): ${faqData}
     
     REGOLE:
     1. Rispondi SOLO in Italiano.
-    2. Se chiedono prenotazioni, chiedi numero persone e orario.
+    2. Se chiedono opzioni senza glutine, conferma la disponibilità in base ai dati FAQ.
     3. Sii gentile e professionale.
   `;
 };
