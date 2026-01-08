@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100%" alt="AI Restaurant Concierge Banner" src="LINK_IMMAGINE_QUI" />
+  <img width="100%" alt="AI Restaurant Concierge Banner" src=https://github.com/MauroilFuriano/ai-business-assistant/blob/main/src/immagine_demo.png?raw=true"" />
 
   # 🍕 AI Business Assistant | Ristorante Demo
   
