@@ -28,12 +28,12 @@ const ChatInterface: React.FC = () => {
 
     const userText = input;
     setInput('');
-    
+
     // Add User Message
-    const userMsg: ChatMessage = { 
-      id: Date.now().toString(), 
-      role: 'user', 
-      text: userText 
+    const userMsg: ChatMessage = {
+      id: Date.now().toString(),
+      role: 'user',
+      text: userText
     };
     setMessages(prev => [...prev, userMsg]);
     setIsLoading(true);
@@ -49,9 +49,9 @@ const ChatInterface: React.FC = () => {
       setMessages(prev => [...prev, aiMsg]);
     } catch (error: any) {
       console.error("Chat Error:", error);
-      
+
       let errorMessage = "Spiacente, si è verificato un errore imprevisto. Riprova più tardi.";
-      
+
       // Extract specific error message if available
       if (error instanceof Error) {
         errorMessage = error.message;
@@ -81,22 +81,28 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] md:h-[600px] bg-gray-50 md:rounded-xl md:shadow-lg md:border border-gray-200 overflow-hidden">
+    <div className="flex flex-col h-[calc(100vh-4rem)] md:h-[600px] bg-zinc-900/90 backdrop-blur-xl md:rounded-2xl md:shadow-2xl md:border border-zinc-800 overflow-hidden relative">
+      {/* Decorative Glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 blur-[80px] rounded-full pointer-events-none"></div>
+
       {/* Header */}
-      <div className="bg-red-600 text-white p-4 flex items-center shadow-md z-10">
-        <div className="bg-white/20 p-2 rounded-full mr-3">
-          <Bot size={24} />
+      <div className="bg-gradient-to-r from-zinc-800 to-zinc-900 border-b border-zinc-700/50 text-zinc-100 p-4 flex items-center shadow-md z-10">
+        <div className="bg-amber-500/10 border border-amber-500/20 text-amber-500 p-2.5 rounded-xl mr-4 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+          <Bot size={24} className="animate-pulse" />
         </div>
         <div>
-          <h2 className="font-bold text-lg">Mario - AI Assistant</h2>
-          <p className="text-red-100 text-xs flex items-center gap-1">
+          <h2 className="font-bold text-lg tracking-tight">Mario <span className="text-amber-500 font-medium">Assistant</span></h2>
+          <p className="text-zinc-400 text-xs flex items-center gap-1.5 font-medium">
             {isLoading ? (
               <>
-                <Loader2 size={10} className="animate-spin" />
-                Sta scrivendo...
+                <Loader2 size={12} className="animate-spin text-emerald-500" />
+                Elaborazione...
               </>
             ) : (
-              'Risponde subito'
+              <>
+                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_5px_rgba(16,185,129,0.5)]"></span>
+                In ascolto
+              </>
             )}
           </p>
         </div>
@@ -110,14 +116,13 @@ const ChatInterface: React.FC = () => {
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[85%] p-3 rounded-2xl text-sm md:text-base leading-relaxed ${
-                msg.role === 'user'
-                  ? 'bg-red-600 text-white rounded-br-none shadow-md'
-                  : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none shadow-sm'
-              } ${msg.isError ? 'bg-red-100 text-red-600 border-red-300' : ''}`}
+              className={`max-w-[85%] p-4 rounded-2xl text-sm md:text-base leading-relaxed break-words shadow-sm ${msg.role === 'user'
+                  ? 'bg-amber-500 text-zinc-950 rounded-br-none shadow-[0_4px_15px_rgba(245,158,11,0.2)] font-medium'
+                  : 'bg-zinc-800/80 backdrop-blur-sm text-zinc-200 border border-zinc-700/50 rounded-bl-none'
+                } ${msg.isError ? 'bg-red-500/10 text-red-400 border-red-500/20' : ''}`}
             >
               {msg.text.split('\n').map((line, i) => (
-                <p key={i} className={i > 0 ? 'mt-1' : ''}>
+                <p key={i} className={i > 0 ? 'mt-2' : ''}>
                   {line.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1')}
                 </p>
               ))}
@@ -126,11 +131,11 @@ const ChatInterface: React.FC = () => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-white border border-gray-200 text-gray-500 p-4 rounded-2xl rounded-bl-none flex items-center space-x-2 shadow-sm min-w-[100px]">
-               <div className="flex space-x-1.5 p-1">
-                <div className="w-2.5 h-2.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                <div className="w-2.5 h-2.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                <div className="w-2.5 h-2.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            <div className="bg-zinc-800 border border-zinc-700 text-zinc-500 p-4 rounded-2xl rounded-bl-none flex items-center space-x-2 shadow-sm min-w-[80px]">
+              <div className="flex space-x-1.5 p-1">
+                <div className="w-2 h-2 bg-amber-500/50 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                <div className="w-2 h-2 bg-amber-500/70 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                <div className="w-2 h-2 bg-amber-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
               </div>
             </div>
           </div>
@@ -139,30 +144,31 @@ const ChatInterface: React.FC = () => {
       </div>
 
       {/* Input Area */}
-      <div className="p-3 bg-white border-t border-gray-200 mb-16 md:mb-0">
-        <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-4 py-2 border border-gray-300 focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-500 transition-all">
+      <div className="p-4 bg-zinc-900/80 backdrop-blur-xl border-t border-zinc-800 mb-16 md:mb-0 z-10">
+        <div className="flex items-center space-x-2 bg-zinc-950 rounded-2xl px-5 py-3 border border-zinc-800 focus-within:border-amber-500/50 focus-within:shadow-[0_0_15px_rgba(245,158,11,0.1)] transition-all duration-300">
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
-            placeholder="Scrivi un messaggio..."
-            className="flex-1 bg-transparent outline-none text-gray-800 placeholder-gray-500"
+            placeholder="Chiedimi informazioni o prenota..."
+            className="flex-1 bg-transparent outline-none text-zinc-100 placeholder-zinc-600 font-medium"
             disabled={isLoading}
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || isLoading}
-            className={`p-2 rounded-full transition-colors ${
-              input.trim() && !isLoading ? 'text-red-600 hover:bg-red-50' : 'text-gray-400'
-            }`}
+            className={`p-2.5 rounded-xl transition-all duration-300 ${input.trim() && !isLoading
+                ? 'bg-amber-500 text-zinc-950 hover:bg-amber-400 hover:scale-105 hover:shadow-[0_0_10px_rgba(245,158,11,0.4)]'
+                : 'bg-zinc-800 text-zinc-600'
+              }`}
           >
-            <Send size={20} />
+            <Send size={18} className={input.trim() && !isLoading ? 'transform translate-x-0.5 -translate-y-0.5' : ''} />
           </button>
         </div>
-        <div className="text-center mt-2">
-            <p className="text-[10px] text-gray-400">AI powered by Gemini</p>
+        <div className="text-center mt-3">
+          <p className="text-[10px] text-zinc-600 font-medium tracking-wider uppercase">Neural Network Backend</p>
         </div>
       </div>
     </div>

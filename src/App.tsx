@@ -101,7 +101,7 @@ const App: React.FC = () => {
         return (
           <div className="space-y-6 pb-20">
             <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Il Nostro Menu</h2>
+              <h2 className="text-2xl font-bold text-zinc-100 mb-4 tracking-tight">Il Nostro Menu</h2>
 
               {/* Category Filter */}
               <div className="flex overflow-x-auto pb-2 gap-2 scrollbar-hide -mx-1 px-1">
@@ -110,8 +110,8 @@ const App: React.FC = () => {
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
                     className={`px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${selectedCategory === cat
-                        ? 'bg-amber-500 text-zinc-950 shadow-[0_0_15px_rgba(245,158,11,0.3)] transform scale-105'
-                        : 'bg-zinc-900 text-zinc-400 border border-zinc-800 hover:bg-zinc-800 hover:text-zinc-200'
+                      ? 'bg-amber-500 text-zinc-950 shadow-[0_0_15px_rgba(245,158,11,0.3)] transform scale-105'
+                      : 'bg-zinc-900 text-zinc-400 border border-zinc-800 hover:bg-zinc-800 hover:text-zinc-200'
                       }`}
                   >
                     {cat}
@@ -137,8 +137,8 @@ const App: React.FC = () => {
         return (
           <div className="h-full pb-20 md:pb-0">
             <div className="mb-4">
-              <h2 className="text-2xl font-bold text-gray-800">Assistente Virtuale</h2>
-              <p className="text-gray-500">Parla con Mario, il nostro esperto digitale.</p>
+              <h2 className="text-2xl font-bold text-zinc-100 tracking-tight">Assistente Virtuale</h2>
+              <p className="text-zinc-400">Parla con Mario, il nostro esperto digitale.</p>
             </div>
             <ChatInterface />
           </div>
@@ -147,7 +147,7 @@ const App: React.FC = () => {
         return (
           <div className="h-full">
             <div className="mb-4">
-              <h2 className="text-2xl font-bold text-gray-800">Informazioni</h2>
+              <h2 className="text-2xl font-bold text-zinc-100 tracking-tight">Informazioni</h2>
             </div>
             <InfoSection />
           </div>

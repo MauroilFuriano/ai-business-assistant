@@ -22,7 +22,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Pomodoro San Marzano, Mozzarella di Bufala Campana DOP, basilico fresco, olio EVO.",
       price: "€ 12,00",
       category: "Pizze",
-      imageUrl: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "/images/pizza_margherita_1772380508504.png"
     },
     {
       id: "2",
@@ -30,7 +30,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Guanciale croccante, tuorlo d'uovo, Pecorino Romano, pepe nero. Senza panna.",
       price: "€ 14,00",
       category: "Primi",
-      imageUrl: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "/images/spaghetti_carbonara_1772380556671.png"
     },
     {
       id: "3",
@@ -38,7 +38,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Selezione di salumi e formaggi locali con miele e confetture.",
       price: "€ 18,00",
       category: "Antipasti",
-      imageUrl: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "/images/tagliere_misto_1772380576687.png"
     },
     {
       id: "4",
@@ -46,7 +46,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Savoiardi, mascarpone fresco, caffè espresso, cacao amaro.",
       price: "€ 6,00",
       category: "Dolci",
-      imageUrl: "https://images.unsplash.com/photo-1542124948-dc391252a940?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "/images/tiramisu_1772380591387.png"
     },
     {
       id: "5",
@@ -54,7 +54,7 @@ export const BUSINESS_INFO: BusinessInfo = {
       description: "Pomodoro, mozzarella, salame piccante napoletano.",
       price: "€ 10,00",
       category: "Pizze",
-      imageUrl: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=60"
+      imageUrl: "/images/pizza_diavola_1772380524801.png"
     }
   ],
   faq: {
